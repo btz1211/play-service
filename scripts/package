@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./scripts/write-version && sbt packageDocker

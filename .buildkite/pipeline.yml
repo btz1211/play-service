@@ -1,0 +1,14 @@
+steps:
+  - label: Build
+    command: scripts/build
+    timeout_in_minutes: 10
+    agents:
+      queue: buildkite-agent-1747704900-9sdwh
+  - wait
+  - label: Package
+    command: scripts/package
+    timeout_in_minutes: 5
+    artifact_paths: target/aws/fuhgavi*.zip
+    agents:
+      queue: buildkite-agent-1747704900-9sdwh
+  - wait
