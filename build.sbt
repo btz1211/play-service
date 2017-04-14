@@ -1,3 +1,5 @@
+enablePlugins(DockerPlugin)
+
 name := """play-service"""
 
 version := "1.0-SNAPSHOT"
