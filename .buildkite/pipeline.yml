@@ -5,10 +5,15 @@ steps:
     agents:
       queue: default
   - wait
+  - label: Dockerize
+    command: scripts/dockerize
+    timeout_in_minutes: 5
+    agents:
+      queue: default
+  - wait
   - label: Package
     command: scripts/package
     timeout_in_minutes: 5
-    artifact_paths: target/aws/fuhgavi*.zip
     agents:
       queue: default
   - wait
