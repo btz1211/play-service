@@ -2,5 +2,6 @@
 
 sbt docker:publishLocal
 cd target/docker/stage
+docker build -t play-service .
 docker tag play-service gcr.io/identity-service-164417/play-service
 gcloud docker -- push gcr.io/identity-service-164417/play-service
