@@ -1,0 +1,25 @@
+#[START swagger]
+swagger: "2.0"
+info:
+  description: "A Play Framework Service in Google Cloud Endpoints"
+  title: "Play Service in GCP Endpoints"
+  version: "1.0.0"
+host: "play-service.endpoints.identity-service-164417.cloud.goog"
+# [END swagger]
+basePath: "/"
+consumes:
+- "application/json"
+produces:
+- "application/text"
+schemes:
+- "https"
+paths:
+  "/count":
+    get:
+      description: "get a count"
+      operationId: "count"
+      produces:
+      - "application/text"
+      responses:
+        200:
+          description: "Count"
