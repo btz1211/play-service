@@ -1,7 +1,12 @@
 #!/bin/bash
 
+RUNNING_INSTANCES=`docker ps -q`
+
 #stop all running docker containers
-docker stop $(docker ps -q)
+if [ ! -z "$RUNNING_INSTANCES" ]; then
+  echo "stopping running instances: $RUNNING_INSTANCES"
+  docker stop $RUNNING_INSTANCES
+fi
 
 #start play service
 sudo docker run --name play-service --rm -p 8080:9000 gcr.io/identity-service-164417/play-service:latest &
