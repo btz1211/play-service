@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#stop all running docker containers
+docker stop $(docker ps -q)
+
+#start play service
+sudo docker run --name play-service --rm -p 8080:9000 gcr.io/identity-service-164417/play-service:latest &
+
+#link the play service with endpoints
+sudo docker run --name=esp --rm -p 80:8080 --link=play-service:play-service gcr.io/endpoints-release/endpoints-runtime:1 -s play-service.endpoints.identity-service-164417.cloud.goog -v 2017-04-15r1 -a play-service:9000 &
