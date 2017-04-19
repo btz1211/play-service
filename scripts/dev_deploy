@@ -11,9 +11,8 @@ fi
 
 #start play service
 echo "starting play service"
-sudo docker run --name play-service -d -p 8080:9000 gcr.io/identity-service-164417/play-service:latest
+sudo docker run --name play-service -d -p 8080:9000 gcr.io/tardis-1/play-service:latest
 
 #link the play service with endpoints
 echo "linking play service with endpoints"
-sudo docker run --name=esp -d -p 80:8080 --link=play-service:play-service gcr.io/endpoints-release/endpoints-runtime:1 -s play-service.endpoints.identity-service-16
-4417.cloud.goog -v 2017-04-15r1 -a play-service:9000
+sudo docker run --name=esp -d -p 80:8080 --link=play-service:play-service gcr.io/endpoints-release/endpoints-runtime:1 -s play-service.endpoints.tardis-1.cloud.goog -v 2017-04-15r1 -a play-service:9000
