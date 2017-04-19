@@ -17,8 +17,8 @@ steps:
     agents:
       queue: default
   - wait
-  - label: Dev Deploy
-    command: scripts/dev_deploy
+  - label: Generate Endpoints
+    command: scripts/generate_endpoints
     timeout_in_minutes: 5
     agents:
       queue: default
