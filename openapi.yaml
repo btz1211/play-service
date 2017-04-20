@@ -4,7 +4,7 @@ info:
   description: "A Play Framework Service in Google Cloud Endpoints"
   title: "Play Service in GCP Endpoints"
   version: "1.0.0"
-host: "play-service.endpoints.identity-service-164417.cloud.goog"
+host: "play-service.endpoints.tardis-1.cloud.goog"
 # [END swagger]
 basePath: "/"
 consumes:
