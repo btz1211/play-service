@@ -23,9 +23,9 @@ steps:
     agents:
       queue: default
   - wait
-    - label: Deploy to Dev
-      command: scripts/dev_deploy
-      timeout_in_minutes: 5
-      agents:
-        queue: default
+  - label: Deploy to Dev
+    command: scripts/dev_deploy
+    timeout_in_minutes: 5
+    agents:
+      queue: default
   - wait
