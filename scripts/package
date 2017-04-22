@@ -1,6 +1,6 @@
 #!/bin/bash
 
 cd target/docker/stage
-sudo docker build -t play-service .
-sudo docker tag play-service gcr.io/tardis-1/play-service
-sudo gcloud docker -- push gcr.io/tardis-1/play-service
+docker build -t play-service .
+docker tag play-service gcr.io/tardis-1/play-service
+gcloud docker -- push gcr.io/tardis-1/play-service

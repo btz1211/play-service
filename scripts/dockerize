@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo sbt docker:publishLocal
+sbt docker:publishLocal
