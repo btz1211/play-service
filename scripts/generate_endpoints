@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcloud service-management deploy openapi.yaml
+sudo gcloud service-management deploy openapi.yaml
