@@ -7,12 +7,7 @@ sudo apt-get update && sudo apt-get install -y buildkite-agent
 sudo sed -i "s/xxx/1fe00a68d2b0a599eb2dac11a2ea21481a696ef651c32aebdb/g" /etc/buildkite-agent/buildkite-agent.cfg
 sudo systemctl enable buildkite-agent && sudo systemctl start buildkite-agent
 
-#run the rest of the commands as the buildkite-agent user
-sudo usermod -a -G sudo buildkite-agent
-sudo usermod -a -G google-sudoers buildkite-agent
-
-
-#install sbt
+# #install sbt
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
 sudo apt-get update
@@ -30,6 +25,9 @@ sudo apt-get install -y docker-engine
 sudo usermod -aG docker buildkite-agent
 
 #install kubernetes
-sudo su buildkite-agent
-cd ~
-sudo curl -sS https://get.k8s.io | bash
+# sudo adduser buildkite-agent sudo
+# sudo -i
+# echo 'buildkite-agent  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+# sudo curl -sS https://get.k8s.io | bash
+# mv kubernetes /var/lib/buildkite-agent
+# chmod 755 var/lib/buildkite-agent/kubernetes
