@@ -2,6 +2,8 @@
 
 export PATH=$HOME/kubernetes/platforms/linux/amd64:$PATH
 
+gcloud container clusters get-credentials play-service --zone us-central1-a --project tardis-1
+
 kubectl delete deployments --all
 
 kubectl delete services --all
