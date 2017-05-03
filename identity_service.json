@@ -1,0 +1,107 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API for providing Identity related information of a Link",
+    "title" : "Identity Service",
+    "version" : "1.0.0"
+  },
+  "host": "identity-service",
+  "basePath": "/api/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/whoami": {
+      "get": {
+        "summary": "Returns all the SBC's Identity Information",
+        "operationId": "whoami",
+        "description": "Returns all the SBC's Identity Information",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Identity"
+            }
+          }
+        },
+        "security" : [ {
+          "jwt-authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration": {
+          "type": "http",
+          "uri": "https://identity-api.qa.linksvc.com/api/v1/whoami",
+          "httpMethod": "GET",
+          "passthroughBehavior": "when_no_match",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "securityDefinitions" : {
+    "jwt-authorizer" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header",
+      "x-amazon-apigateway-authtype" : "oauth2",
+      "x-amazon-apigateway-authorizer" : {
+        "type" : "token",
+        "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:028957328603:function:jwt_gateway_authorizer/invocations",
+        "authorizerCredentials" : "arn:aws:iam::028957328603:role/lambda",
+        "authorizerResultTtlInSeconds" : 60
+      }
+    }
+  },
+
+  "definitions":{
+    "Identity": {
+      "type": "object",
+      "required": [
+        "bundleId",
+        "macAddress",
+        "deviceType",
+        "siteId",
+        "deploymentZone",
+        "environment"
+      ],
+      "properties": {
+        "bundleId": {
+          "type": "string"
+        },
+        "macAddress": {
+          "type": "string",
+          "description": "MAC Address of the SBC"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "Device Type (ADR, ADL ...etc)"
+        },
+        "siteId": {
+          "type": "string",
+          "description": "Site ID"
+        },
+        "deploymentZone": {
+          "type": "string",
+          "description": "Deployment Zone such as UK or NYC"
+        },
+        "environment": {
+          "type": "string",
+          "description": "i.e DEV, QA, PROD"
+        }
+      }
+    }
+  }
+}
