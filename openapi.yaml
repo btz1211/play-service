@@ -23,6 +23,8 @@ paths:
       responses:
         200:
           description: "Count"
+      security:
+        - api_key: []
 
 securityDefinitions:
   # This section configures basic authentication with an API key.
